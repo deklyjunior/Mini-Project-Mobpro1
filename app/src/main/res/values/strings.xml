@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">Mini Project</string>
+    <string name="app_name">Kuis Kesehatan</string>
+    <string name="home_title">Selamat datang di Kuis Kesehatan!</string>
+    <string name="start_quiz">Mulai</string>
+
+    <string name="q_sesak_napas">Apakah Anda merasa sesak napas?</string>
+    <string name="q_pusing">Apakah Anda merasa pusing?</string>
+    <string name="q_demam">Apakah Anda mengalami demam?</string>
+    <string name="q_batuk">Apakah Anda sedang batuk?</string>
+    <string name="q_nyeri_dada">Apakah Anda merasakan nyeri dada?</string>
+
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+
+    <string name="evaluate">Evaluasi</string>
+
+    <string name="warning_incomplete">Harap jawab semua pertanyaan terlebih dahulu!</string>
+
+    <string name="result_critical">Gejala serius terdeteksi. Segera periksakan diri ke dokter.</string>
+    <string name="result_moderate">Beberapa gejala terdeteksi. Disarankan istirahat dan pantau kondisi Anda.</string>
+    <string name="result_normal">Tidak ada gejala serius. Tetap jaga kesehatan!</string>
+
+    <string name="quiz_title">Pertanyaan Kuis</string>
 </resources>
