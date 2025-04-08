@@ -15,8 +15,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.junior0028.miniproject.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,11 +36,11 @@ fun MainScreen(navController: NavHostController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Selamat datang di Kuis Kesehatan!", style = MaterialTheme.typography.titleLarge)
+            Text(text = stringResource(R.string.home_title), style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = { navController.navigate("quiz") }) {
-                Text("Mulai")
+            Button(onClick = { navController.navigate("quizScreen") }) {
+                Text(stringResource(R.string.start_quiz))
+            }
             }
         }
     }
-}
