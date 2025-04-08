@@ -1,4 +1,4 @@
-package com.junior0028.miniproject.ui.theme
+package com.junior0028.miniproject.ui.theme.theme
 
 import androidx.compose.ui.graphics.Color
 

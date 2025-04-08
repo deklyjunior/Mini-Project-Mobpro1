@@ -1,4 +1,4 @@
-package com.junior0028.miniproject.ui.theme
+package com.junior0028.miniproject.ui.theme.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
