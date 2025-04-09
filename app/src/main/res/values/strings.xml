@@ -1,24 +1,39 @@
 <resources>
-    <string name="app_name">Kuis Kesehatan</string>
-    <string name="home_title">Selamat datang di Kuis Kesehatan!</string>
-    <string name="start_quiz">Mulai</string>
+    <!-- App Info -->
+    <string name="app_name">Health Quiz</string>
 
-    <string name="q_sesak_napas">Apakah Anda merasa sesak napas?</string>
-    <string name="q_pusing">Apakah Anda merasa pusing?</string>
-    <string name="q_demam">Apakah Anda mengalami demam?</string>
-    <string name="q_batuk">Apakah Anda sedang batuk?</string>
-    <string name="q_nyeri_dada">Apakah Anda merasakan nyeri dada?</string>
+    <!-- Home -->
+    <string name="home_title">Welcome to Health Quiz!</string>
+    <string name="start_quiz">Start</string>
 
-    <string name="ya">Ya</string>
-    <string name="tidak">Tidak</string>
+    <!-- Quiz Input -->
+    <string name="quiz_title">Health Screening</string>
+    <string name="evaluate">Evaluate</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="select_answer">Select an answer</string>
+    <string name="your_name">Your Name</string>
+    <string name="enter_name">Enter your name</string>
 
-    <string name="evaluate">Evaluasi</string>
+    <!-- Questions -->
+    <string name="q_breathing">Do you experience shortness of breath?</string>
+    <string name="q_dizzy">Do you feel dizzy?</string>
+    <string name="q_fever">Have you had a fever recently?</string>
+    <string name="q_cough">Are you experiencing a cough?</string>
+    <string name="q_chest_pain">Do you feel chest pain?</string>
 
-    <string name="warning_incomplete">Harap jawab semua pertanyaan terlebih dahulu!</string>
+    <!-- Result -->
+    <string name="result_critical">Your condition shows serious symptoms. Please consult a doctor immediately.</string>
+    <string name="result_moderate">You show some symptoms. It\'s advised to rest and monitor your condition.</string>
+    <string name="result_normal">No significant symptoms. Keep maintaining a healthy lifestyle!</string>
 
-    <string name="result_critical">Gejala serius terdeteksi. Segera periksakan diri ke dokter.</string>
-    <string name="result_moderate">Beberapa gejala terdeteksi. Disarankan istirahat dan pantau kondisi Anda.</string>
-    <string name="result_normal">Tidak ada gejala serius. Tetap jaga kesehatan!</string>
+    <!-- Alert -->
+    <string name="warning_title">Warning</string>
+    <string name="warning_incomplete">Please answer all questions before continuing.</string>
+    <string name="ok">OK</string>
 
-    <string name="quiz_title">Pertanyaan Kuis</string>
+    <!-- Info Screen -->
+    <string name="info_title">Symptoms to Watch</string>
+    <string name="info_content">Some symptoms that may indicate health issues include: fever, cough, chest pain, difficulty breathing, and dizziness. Always monitor your condition and seek medical help when needed.</string>
+    <string name="back">Back</string>
 </resources>

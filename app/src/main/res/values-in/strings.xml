@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <!-- Informasi Aplikasi -->
+        <string name="app_name">Kuis Kesehatan</string>
+
+        <!-- Home -->
+        <string name="home_title">Selamat datang di Kuis Kesehatan!</string>
+        <string name="start_quiz">Mulai</string>
+
+        <!-- Input Quiz -->
+        <string name="quiz_title">Skrining Kesehatan</string>
+        <string name="evaluate">Evaluasi</string>
+        <string name="yes">Ya</string>
+        <string name="no">Tidak</string>
+        <string name="select_answer">Pilih jawaban</string>
+        <string name="your_name">Nama Anda</string>
+        <string name="enter_name">Masukkan nama Anda</string>
+
+        <!-- Pertanyaan -->
+        <string name="q_breathing">Apakah Anda mengalami sesak napas?</string>
+        <string name="q_dizzy">Apakah Anda merasa pusing?</string>
+        <string name="q_fever">Apakah Anda mengalami demam akhir-akhir ini?</string>
+        <string name="q_cough">Apakah Anda sedang batuk?</string>
+        <string name="q_chest_pain">Apakah Anda merasakan nyeri di dada?</string>
+
+        <!-- Hasil Evaluasi -->
+        <string name="result_critical">Kondisi Anda menunjukkan gejala serius. Segera periksakan diri ke dokter.</string>
+        <string name="result_moderate">Anda menunjukkan beberapa gejala. Disarankan untuk istirahat dan pantau kondisi Anda.</string>
+        <string name="result_normal">Tidak ada gejala mencurigakan. Tetap jaga kesehatan dan pola hidup sehat!</string>
+
+        <!-- Dialog / Alert -->
+        <string name="warning_title">Peringatan</string>
+        <string name="warning_incomplete">Harap isi semua pertanyaan terlebih dahulu!</string>
+        <string name="ok">OK</string>
+
+        <!-- Layar Informasi -->
+        <string name="info_title">Gejala yang Perlu Diwaspadai</string>
+        <string name="info_content">Beberapa gejala yang perlu diperhatikan antara lain: demam, batuk, nyeri dada, kesulitan bernapas, dan pusing. Selalu pantau kondisi Anda dan segera konsultasi ke dokter jika diperlukan.</string>
+        <string name="back">Kembali</string>
+</resources>
