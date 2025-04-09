@@ -36,4 +36,7 @@
     <string name="info_title">Symptoms to Watch</string>
     <string name="info_content">Some symptoms that may indicate health issues include: fever, cough, chest pain, difficulty breathing, and dizziness. Always monitor your condition and seek medical help when needed.</string>
     <string name="back">Back</string>
+
+    <string name="radio_question">Are you currently under treatment?</string>
+    <string name="share">Share Result</string>
 </resources>

@@ -37,4 +37,7 @@
         <string name="info_title">Gejala yang Perlu Diwaspadai</string>
         <string name="info_content">Beberapa gejala yang perlu diperhatikan antara lain: demam, batuk, nyeri dada, kesulitan bernapas, dan pusing. Selalu pantau kondisi Anda dan segera konsultasi ke dokter jika diperlukan.</string>
         <string name="back">Kembali</string>
+
+        <string name="radio_question">Apakah Anda sedang dalam pengobatan?</string>
+        <string name="share">Bagikan Hasil</string>
 </resources>
