@@ -1,12 +1,7 @@
 <resources>
-    <!-- App Info -->
     <string name="app_name">Health Quiz</string>
-
-    <!-- Home -->
     <string name="home_title">Welcome to Health Quiz!</string>
     <string name="start_quiz">Start</string>
-
-    <!-- Quiz Input -->
     <string name="quiz_title">Health Screening</string>
     <string name="evaluate">Evaluate</string>
     <string name="yes">Yes</string>
@@ -14,37 +9,23 @@
     <string name="select_answer">Select an answer</string>
     <string name="your_name">Your Name</string>
     <string name="enter_name">Enter your name</string>
-
-    <!-- Questions -->
     <string name="q_breathing">Do you experience shortness of breath?</string>
     <string name="q_dizzy">Do you feel dizzy?</string>
     <string name="q_fever">Have you had a fever recently?</string>
     <string name="q_cough">Are you experiencing a cough?</string>
     <string name="q_chest_pain">Do you feel chest pain?</string>
-
-    <!-- Result -->
     <string name="result_critical">Your condition shows serious symptoms. Please consult a doctor immediately.</string>
     <string name="result_moderate">You show some symptoms. It\'s advised to rest and monitor your condition.</string>
     <string name="result_normal">No significant symptoms. Keep maintaining a healthy lifestyle!</string>
-
-    <!-- Alert -->
     <string name="warning_title">Warning</string>
     <string name="warning_incomplete">Please answer all questions before continuing.</string>
     <string name="ok">OK</string>
-
-    <!-- Info Screen -->
     <string name="info_title">Symptoms to Watch</string>
     <string name="info_content">Some symptoms that may indicate health issues include: fever, cough, chest pain, difficulty breathing, and dizziness. Always monitor your condition and seek medical help when needed.</string>
     <string name="back">Back</string>
-
     <string name="radio_question">Are you currently under treatment?</string>
     <string name="share">Share Result</string>
-    <string name="bagikan_template">
-    Name: %1$s
-    Answers: %2$s
-    Under treatment: %3$s
-    Result: %4$s
-    </string>
+    <string name="bagikan_template"> Name: %1$s Answers: %2$s Under treatment: %3$s Result: %4$s </string>
     <string name="bagikan">Share Result</string>
     <string name="image_description_home">Background image</string>
 </resources>
