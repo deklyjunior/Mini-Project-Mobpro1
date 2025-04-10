@@ -39,4 +39,12 @@
 
     <string name="radio_question">Are you currently under treatment?</string>
     <string name="share">Share Result</string>
+    <string name="bagikan_template">
+    Name: %1$s
+    Answers: %2$s
+    Under treatment: %3$s
+    Result: %4$s
+    </string>
+    <string name="bagikan">Share Result</string>
+
 </resources>

@@ -40,4 +40,12 @@
 
         <string name="radio_question">Apakah Anda sedang dalam pengobatan?</string>
         <string name="share">Bagikan Hasil</string>
+        <string name="bagikan_template">
+        Nama: %1$s
+        Jawaban: %2$s
+        Dalam pengobatan: %3$s
+        Hasil: %4$s
+        </string>
+        <string name="bagikan">Bagikan Hasil</string>
+
 </resources>

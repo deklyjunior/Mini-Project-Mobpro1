@@ -2,11 +2,13 @@ package com.junior0028.miniproject.ui.theme.screen
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -14,10 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.junior0028.miniproject.R
 import com.junior0028.miniproject.navigation.Screen
+import com.junior0028.miniproject.ui.theme.theme.MiniProjectTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,8 +72,13 @@ fun MainScreen(navController: NavHostController) {
                 onValueChange = { name.value = it },
                 label = { Text(stringResource(R.string.your_name)) },
                 placeholder = { Text(stringResource(R.string.enter_name)) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                isError = name.value.isBlank(),
+                trailingIcon = {
+                    IconPicker(isError = name.value.isBlank(), unit = "")
+                }
             )
+            ErrorHint(isError = name.value.isBlank())
 
             questions.forEach { questionResId ->
                 val questionText = stringResource(id = questionResId)
@@ -88,7 +98,7 @@ fun MainScreen(navController: NavHostController) {
                             ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                         },
                         modifier = Modifier
-                            .menuAnchor()
+                            .menuAnchor(MenuAnchorType.PrimaryEditable)
                             .fillMaxWidth()
                     )
 
@@ -152,10 +162,23 @@ fun MainScreen(navController: NavHostController) {
                 )
 
                 Button(
-                    onClick = { shareResult(context, name.value, it) },
-                    modifier = Modifier.fillMaxWidth()
+                    onClick = {
+                        val allAnswers = dropdownAnswers.values.joinToString(", ")
+                        val message = context.getString(
+                            R.string.bagikan_template,
+                            name.value,
+                            allAnswers,
+                            radioAnswer ?: "-",
+                            it
+                        )
+                        shareData(context = context, message = message)
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
                 ) {
-                    Text(text = stringResource(R.string.share))
+                    Text(text = stringResource(R.string.bagikan))
                 }
             }
 
@@ -175,11 +198,37 @@ fun MainScreen(navController: NavHostController) {
     }
 }
 
-fun shareResult(context: Context, name: String, result: String) {
+fun shareData(context: Context, message: String) {
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
-        putExtra(Intent.EXTRA_SUBJECT, "Hasil Kuis Kesehatan")
-        putExtra(Intent.EXTRA_TEXT, "$name, $result")
+        putExtra(Intent.EXTRA_TEXT, message)
     }
     context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)))
+}
+
+@Composable
+fun IconPicker(isError: Boolean, unit: String) {
+    if (isError) {
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    } else {
+        if (unit.isNotEmpty()) {
+            Text(text = unit)
+        }
+    }
+}
+
+@Composable
+fun ErrorHint(isError: Boolean) {
+    if (isError) {
+        Text(text = stringResource(R.string.warning_incomplete), color = MaterialTheme.colorScheme.error)
+    }
+}
+
+@Preview(showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    MiniProjectTheme {
+        MainScreen(navController = rememberNavController())
+    }
 }
