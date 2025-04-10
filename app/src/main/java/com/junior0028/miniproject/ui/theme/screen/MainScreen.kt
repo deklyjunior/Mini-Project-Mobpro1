@@ -20,6 +20,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 import com.junior0028.miniproject.R
 import com.junior0028.miniproject.navigation.Screen
 import com.junior0028.miniproject.ui.theme.theme.MiniProjectTheme
@@ -60,143 +65,157 @@ fun MainScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            OutlinedTextField(
-                value = name.value,
-                onValueChange = { name.value = it },
-                label = { Text(stringResource(R.string.your_name)) },
-                placeholder = { Text(stringResource(R.string.enter_name)) },
-                modifier = Modifier.fillMaxWidth(),
-                isError = name.value.isBlank(),
-                trailingIcon = {
-                    IconPicker(isError = name.value.isBlank(), unit = "")
-                }
+        Box(modifier = Modifier.fillMaxSize()) {
+            Image(
+                painter = painterResource(id = R.drawable.evangelion_pilots),
+                contentDescription = stringResource(R.string.image_description_home),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
-            ErrorHint(isError = name.value.isBlank())
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.9f))
+            )
+        }
+            Column(
+                modifier = Modifier
+                    .padding(padding)
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                OutlinedTextField(
+                    value = name.value,
+                    onValueChange = { name.value = it },
+                    label = { Text(stringResource(R.string.your_name)) },
+                    placeholder = { Text(stringResource(R.string.enter_name)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    isError = name.value.isBlank(),
+                    trailingIcon = {
+                        IconPicker(isError = name.value.isBlank(), unit = "")
+                    }
+                )
+                ErrorHint(isError = name.value.isBlank())
 
-            questions.forEach { questionResId ->
-                val questionText = stringResource(id = questionResId)
-                var expanded by remember { mutableStateOf(false) }
-                val selected = dropdownAnswers[questionResId] ?: ""
+                questions.forEach { questionResId ->
+                    val questionText = stringResource(id = questionResId)
+                    var expanded by remember { mutableStateOf(false) }
+                    val selected = dropdownAnswers[questionResId] ?: ""
 
-                ExposedDropdownMenuBox(
-                    expanded = expanded,
-                    onExpandedChange = { expanded = !expanded }
-                ) {
-                    OutlinedTextField(
-                        value = selected,
-                        onValueChange = {},
-                        readOnly = true,
-                        label = { Text(text = questionText) },
-                        trailingIcon = {
-                            ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                        },
-                        modifier = Modifier
-                            .menuAnchor(MenuAnchorType.PrimaryEditable)
-                            .fillMaxWidth()
-                    )
-
-                    ExposedDropdownMenu(
+                    ExposedDropdownMenuBox(
                         expanded = expanded,
-                        onDismissRequest = { expanded = false }
+                        onExpandedChange = { expanded = !expanded }
                     ) {
-                        options.forEach { option ->
-                            DropdownMenuItem(
-                                text = { Text(option) },
-                                onClick = {
-                                    dropdownAnswers[questionResId] = option
-                                    expanded = false
-                                }
-                            )
+                        OutlinedTextField(
+                            value = selected,
+                            onValueChange = {},
+                            readOnly = true,
+                            label = { Text(text = questionText) },
+                            trailingIcon = {
+                                ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                            },
+                            modifier = Modifier
+                                .menuAnchor(MenuAnchorType.PrimaryEditable)
+                                .fillMaxWidth()
+                        )
+
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }
+                        ) {
+                            options.forEach { option ->
+                                DropdownMenuItem(
+                                    text = { Text(option) },
+                                    onClick = {
+                                        dropdownAnswers[questionResId] = option
+                                        expanded = false
+                                    }
+                                )
+                            }
                         }
                     }
                 }
-            }
 
-            Text(text = stringResource(R.string.radio_question))
-            Row {
-                RadioButton(
-                    selected = radioAnswer == context.getString(R.string.yes),
-                    onClick = { radioAnswer = context.getString(R.string.yes) }
-                )
-                Text(context.getString(R.string.yes), modifier = Modifier.padding(start = 8.dp))
-                Spacer(modifier = Modifier.width(16.dp))
-                RadioButton(
-                    selected = radioAnswer == context.getString(R.string.no),
-                    onClick = { radioAnswer = context.getString(R.string.no) }
-                )
-                Text(context.getString(R.string.no), modifier = Modifier.padding(start = 8.dp))
-            }
-
-            Button(
-                onClick = {
-                    if (name.value.isBlank() || dropdownAnswers.size < questions.size || dropdownAnswers.values.any { it.isEmpty() } || radioAnswer == null) {
-                        showAlert = true
-                    } else {
-                        val yesCount = dropdownAnswers.values.count { it == context.getString(R.string.yes) }
-                        resultText = when {
-                            yesCount >= 4 -> context.getString(R.string.result_critical)
-                            yesCount >= 2 -> context.getString(R.string.result_moderate)
-                            else -> context.getString(R.string.result_normal)
-                        }
-                    }
-                },
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = stringResource(R.string.evaluate))
-            }
-
-            resultText?.let {
-                HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
-                Text(
-                    text = "${name.value}, $it",
-                    style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
-                )
+                Text(text = stringResource(R.string.radio_question))
+                Row {
+                    RadioButton(
+                        selected = radioAnswer == context.getString(R.string.yes),
+                        onClick = { radioAnswer = context.getString(R.string.yes) }
+                    )
+                    Text(context.getString(R.string.yes), modifier = Modifier.padding(start = 8.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
+                    RadioButton(
+                        selected = radioAnswer == context.getString(R.string.no),
+                        onClick = { radioAnswer = context.getString(R.string.no) }
+                    )
+                    Text(context.getString(R.string.no), modifier = Modifier.padding(start = 8.dp))
+                }
 
                 Button(
                     onClick = {
-                        val allAnswers = dropdownAnswers.values.joinToString(", ")
-                        val message = context.getString(
-                            R.string.bagikan_template,
-                            name.value,
-                            allAnswers,
-                            radioAnswer ?: "-",
-                            it
-                        )
-                        shareData(context = context, message = message)
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
-                ) {
-                    Text(text = stringResource(R.string.bagikan))
-                }
-            }
-
-            if (showAlert) {
-                AlertDialog(
-                    onDismissRequest = { showAlert = false },
-                    confirmButton = {
-                        TextButton(onClick = { showAlert = false }) {
-                            Text(stringResource(R.string.ok))
+                        if (name.value.isBlank() || dropdownAnswers.size < questions.size || dropdownAnswers.values.any { it.isEmpty() } || radioAnswer == null) {
+                            showAlert = true
+                        } else {
+                            val yesCount =
+                                dropdownAnswers.values.count { it == context.getString(R.string.yes) }
+                            resultText = when {
+                                yesCount >= 4 -> context.getString(R.string.result_critical)
+                                yesCount >= 2 -> context.getString(R.string.result_moderate)
+                                else -> context.getString(R.string.result_normal)
+                            }
                         }
                     },
-                    title = { Text(stringResource(R.string.warning_title)) },
-                    text = { Text(stringResource(R.string.warning_incomplete)) }
-                )
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = stringResource(R.string.evaluate))
+                }
+
+                resultText?.let {
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
+                    Text(
+                        text = "${name.value}, $it",
+                        style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    Button(
+                        onClick = {
+                            val allAnswers = dropdownAnswers.values.joinToString(", ")
+                            val message = context.getString(
+                                R.string.bagikan_template,
+                                name.value,
+                                allAnswers,
+                                radioAnswer ?: "-",
+                                it
+                            )
+                            shareData(context = context, message = message)
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+                    ) {
+                        Text(text = stringResource(R.string.bagikan))
+                    }
+                }
+
+                if (showAlert) {
+                    AlertDialog(
+                        onDismissRequest = { showAlert = false },
+                        confirmButton = {
+                            TextButton(onClick = { showAlert = false }) {
+                                Text(stringResource(R.string.ok))
+                            }
+                        },
+                        title = { Text(stringResource(R.string.warning_title)) },
+                        text = { Text(stringResource(R.string.warning_incomplete)) }
+                    )
+                }
             }
         }
     }
-}
 
 fun shareData(context: Context, message: String) {
     val intent = Intent(Intent.ACTION_SEND).apply {
